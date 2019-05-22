@@ -15,7 +15,7 @@ public class Query {
         this.l = l;
     }
 
-    Query(){
-        l=new ArrayList<Integer>();
+    public Query(List<Integer> l) {
+        this.l = l;
     }
 }

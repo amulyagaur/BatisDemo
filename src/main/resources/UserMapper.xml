@@ -32,6 +32,13 @@
     <select id='getAllUsers' resultMap='UserResult'>
         SELECT * FROM user inner join Address on Address.user_id = user.user_id
     </select>
+
+    <select id="getUserInList" resultMap="UserResult" parameterType="map">
+        SELECT * FROM user inner join Address on Address.user_id = user.user_id where Address.user_id in
+        <foreach collection="ids" index="index" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
     <!--<select id="getUserIn" resultType="com.amulya.batisdemo.domain.User" parameterType="map" resultMap='UserResult'>-->
         <!--SELECT *-->
         <!--FROM user P-->

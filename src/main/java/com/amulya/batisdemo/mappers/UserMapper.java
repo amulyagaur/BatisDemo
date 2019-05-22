@@ -12,6 +12,7 @@ public interface UserMapper {
 //    public User getUserById(Integer userId);
 
     public List<User> getAllUsers();
+    public List<User> getUserInList(Map<String,Object> mp);
 
 //    public void updateUser(User user);
 //

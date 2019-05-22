@@ -5,6 +5,7 @@ import com.amulya.batisdemo.domain.User;
 import com.amulya.batisdemo.mappers.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,6 +36,19 @@ public class UserService {
         try{
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             return userMapper.getAllUsers();
+        }finally{
+            sqlSession.close();
+        }
+    }
+
+    public List<User> getUserInList(Query q) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            Map<String,Object> mp = new HashMap<String,Object>();
+            mp.put("ids",q.getL());
+            System.out.println(mp);
+            return userMapper.getUserInList(mp);
         }finally{
             sqlSession.close();
         }

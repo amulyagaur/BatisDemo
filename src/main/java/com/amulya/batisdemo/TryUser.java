@@ -27,7 +27,14 @@ public class TryUser {
         }
 
         System.out.println("New Code");
-
+        List<Integer> l =new ArrayList<Integer>();
+        l.add(1);
+        l.add(2);
+        Query q = new Query(l);
+        List<User> xx =u.getUserInList(q);
+        for(User d : xx){
+            System.out.println(d);
+        }
 
     }
 }
